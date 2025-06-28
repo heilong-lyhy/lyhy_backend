@@ -1,0 +1,22 @@
+type MainPlan {
+  planid: ID!
+  plantitle: String!
+  description: String!
+  createdAt: String!
+  deadline: String!
+  subItems: [SubItem!]!
+}
+
+type SubItem {
+  subid: ID!
+  subtitle: String
+  description: String
+  completed: Boolean!
+  createdAt: Int!
+  updatedAt: Int!
+  children: [SubItem!]
+}
+
+extend type Query {
+  usergetStudyplan(params:MainPlan): JSON 
+}
