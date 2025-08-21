@@ -23,7 +23,8 @@ module.exports = () => {
       await next();
     } catch (error) {
       console.log(error);
-      console.log(ctx.body.errorCode);
+      // 注释掉访问ctx.body.errorCode的代码，因为在出错时ctx.body可能未定义
+      // console.log(ctx.body?.errorCode);
       // 所有的异常都在 app 上触发一个 error 事件，框架会记录一条错误日志
       // ctx.thorw 或 throw new Error 都会主动触发这个异常
       // ctx.app.emit('error', err, ctx);

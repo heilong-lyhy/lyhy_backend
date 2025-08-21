@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = app => {
-  const { STRING, INTEGER, JSON, ENUM, DATE } = app.Sequelize;
+  const { STRING, INTEGER, DATE } = app.Sequelize;
 
   const tbn = 'subitem';
   const Subitem = app.model.define(tbn, {
@@ -53,7 +53,7 @@ module.exports = app => {
     // freezeTableName: true,
     timestamps: true,
     createdAt: 'created_at', // 可自定义字段名
-    updatedAt: 'updated_at'
+    updatedAt: 'updated_at',
     // tableName: tbn,
     // underscored: true,
   });

@@ -47,7 +47,31 @@ module.exports = () => {
 
     await next();
     if (isGqlQuery) {
-      const response = JSON.parse(ctx.body);
+      // 检查ctx.body是否存在且有效
+      if (!ctx.body) {
+        ctx.body = {
+          success: false,
+          errorCode: 'SERVER_ERROR',
+          errorMessage: '服务器内部错误',
+          showType: 2,
+        };
+        return;
+      }
+
+      let response;
+      try {
+        response = JSON.parse(ctx.body);
+      } catch (e) {
+        ctx.logger.error('GraphQL 响应解析错误', e);
+        ctx.body = {
+          success: false,
+          errorCode: 'INVALID_RESPONSE',
+          errorMessage: '无效的GraphQL响应',
+          showType: 2,
+        };
+        return;
+      }
+
       // console.log(response);
       // 在控制台输出错误，并记录到日志
       if (response.errors) {

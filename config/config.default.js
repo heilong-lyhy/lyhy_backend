@@ -32,16 +32,24 @@ module.exports = appInfo => {
       // onPreGraphQL: function* (ctx) {},
       // 开发工具 graphiQL 路由前的拦截器，建议用于做权限操作(如只提供开发者使用)
       // 这是一个仅允许开发机使用的示例
-      onPreGraphiQL: async ctx => {
-        if (ctx.request.header.host !== '127.0.0.1:7001') {
-          ctx.throw(403, `${ctx.request.header.host} Access Denied`);
-        }
-      },
+      // onPreGraphiQL: async ctx => {
+      //   if (ctx.request.header.host !== '127.0.0.1:7001' || ctx.request.header.host !== 'localhost:7001') {
+      //     ctx.throw(403, `${ctx.request.header.host} Access Denied`);
+      //   }
+      // },
     },
     // jsonwebtoken 的必要变量
     jwt: {
       jwtSecret: 'process.env.APP_JWT_SECRET',
       expiresIn: '9h', // 设置 token 过期时间，可调整为适合的值
+    },
+
+    // 安全配置
+    security: {
+      csrf: {
+        // 忽略 /graphql 路由的 CSRF 检查
+        ignore: ctx => ctx.path === '/graphql',
+      },
     },
   };
 
@@ -64,7 +72,11 @@ module.exports = appInfo => {
   };
 
   // add your middleware config here
-  config.middleware = [ 'graphqlResponseHandler', 'errorHandler' ];
+  config.middleware = [ 'graphql', 'graphqlResponseHandler', 'errorHandler' ];
+
+  config.graphqlResponseHandler = {
+    match: '/graphql', // 只对 /graphql 路径生效
+  };
 
   // add your user config here
   const userConfig = {
