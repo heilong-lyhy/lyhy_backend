@@ -1,3 +1,11 @@
+input MainPlanInput {
+  planid: ID!
+  plantitle: String!
+  description: String!
+  createdAt: String!
+  deadline: String!
+}
+
 type MainPlan {
   planid: ID!
   plantitle: String!
@@ -17,6 +25,11 @@ type SubItem {
   children: [SubItem!]
 }
 
+
 extend type Query {
-  usergetStudyplan(params:MainPlan): JSON 
+  usergetStudyplan(params:MainPlanInput): MainPlan
 }
+
+# extend type Mutation {
+#   userResetFoudlist(input: ResetFoudlistInput!): Boolean! # 更新一个 foudtable 的 foudlist
+# } # 更新一个 foudtable 的 foudlist
