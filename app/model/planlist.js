@@ -3,7 +3,7 @@
 module.exports = app => {
   const { STRING, DataTypes } = app.Sequelize;
 
-  const tbn = 'Planlist';
+  const tbn = 'planlist';
   const Planlist = app.model.define(tbn, {
     username: {
       type: STRING,
@@ -16,9 +16,9 @@ module.exports = app => {
       field: 'mainplans',
     },
   }, {
-    // freezeTableName: true,
+    freezeTableName: true,
     timestamps: false,
-    // tableName: tbn,
+    tableName: tbn,
     // underscored: true,
   });
 

@@ -25,11 +25,6 @@ type SubItem {
   children: [SubItem!]
 }
 
-
 extend type Query {
-  usergetStudyplan(params:MainPlanInput): MainPlan
+  usergetStudyplan(params: MainPlanInput): MainPlan
 }
-
-# extend type Mutation {
-#   userResetFoudlist(input: ResetFoudlistInput!): Boolean! # 更新一个 foudtable 的 foudlist
-# } # 更新一个 foudtable 的 foudlist

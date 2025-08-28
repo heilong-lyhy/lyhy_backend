@@ -1,0 +1,16 @@
+input PlanList {
+  username: String
+  mainplans: [Int]
+}
+
+type PlanListResponse {
+  mainplans: [Int]
+}
+
+extend type Query {
+  usergetPlanlist(params: PlanList): PlanListResponse
+}
+
+extend type Mutation {
+  userResetPlanlist(input: PlanList!): Boolean! # 更新一个 foudtable 的 foudlist
+}

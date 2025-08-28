@@ -12,7 +12,7 @@ class PlanListService extends Service {
 
 
     const result = {
-      mainplans: studyplanlist.mainplans,
+      mainplans: studyplanlist ? studyplanlist.mainplans : [], // 如果没找到记录，返回空数组
       // ...studyplan.dataValues,
       // createdAt: formatDate(studyplan.created_at),
       // deadline: formatDate(studyplan.deadline),
