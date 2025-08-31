@@ -1,21 +1,21 @@
-'use strict';
+// 'use strict';
 
-class StudyplanConnector {
-  constructor(ctx) {
-    this.ctx = ctx;
-    this.service = ctx.service.studyplan.studyplan;
-  }
-
-  async usergetStudyplan(params) {
-    const studyplan = await this.service.usergetStudyplan(params);
-    return studyplan;
-  }
-
-
-//   async userResetFoudlist(input) {
-//     const result = await this.service.userResetFoudlist(input);
-//     return result;
+// class StudyplanConnector {
+//   constructor(ctx) {
+//     this.ctx = ctx;
+//     this.service = ctx.service.studyplan.studyplan;
 //   }
-}
 
-module.exports = StudyplanConnector;
+//   async usergetStudyplan(params) {
+//     const studyplan = await this.service.usergetStudyplan(params);
+//     return studyplan;
+//   }
+
+
+// //   async userResetFoudlist(input) {
+// //     const result = await this.service.userResetFoudlist(input);
+// //     return result;
+// //   }
+// }
+
+// module.exports = StudyplanConnector;

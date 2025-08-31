@@ -3,8 +3,29 @@ input PlanList {
   mainplans: [Int]
 }
 
+# 定义子任务类型
+type SubItem {
+  subid: ID!
+  subtitle: String
+  description: String
+  completed: Boolean!
+  subdeadline: String!
+  updatedAt: String!
+}
+
+# 定义主计划类型
+type MainPlan {
+  planid: ID!
+  plantitle: String!
+  description: String!
+  createdAt: String!
+  deadline: String!
+  subItems: [SubItem!]!
+}
+
+# 定义计划列表响应类型
 type PlanListResponse {
-  mainplans: [Int]
+  mainplans: [MainPlan!]!
 }
 
 extend type Query {

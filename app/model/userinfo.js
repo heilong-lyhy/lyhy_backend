@@ -3,7 +3,7 @@
 module.exports = app => {
   const { STRING, INTEGER } = app.Sequelize;
 
-  const tbn = 'subitem';
+  const tbn = 'userinfo'; // 修正表名
   const userinfo = app.model.define(tbn, {
     useruserid: {
       type: INTEGER,
@@ -38,9 +38,9 @@ module.exports = app => {
       field: 'userslogan',
     },
   }, {
-    // freezeTableName: true,
+    freezeTableName: true,
     timestamps: false,
-    // tableName: tbn,
+    tableName: tbn,
     // underscored: true,
   });
 

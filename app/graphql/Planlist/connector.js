@@ -3,18 +3,28 @@
 class PlanlistConnector {
   constructor(ctx) {
     this.ctx = ctx;
-    this.service = ctx.service.studyplan.planList;
   }
 
   async usergetPlanlist(params) {
-    const planlist = await this.service.usergetPlanList(params);
-    return planlist;
+    try {
+      // 使用正确的service路径
+      const planlist = await this.ctx.service.studyplan.planList.usergetPlanList(params);
+      return planlist;
+    } catch (error) {
+      console.error('PlanlistConnector error:', error);
+      throw error;
+    }
   }
 
 
   async userResetPlanlist(input) {
-    const result = await this.service.userResetPlanlist(input);
-    return result;
+    try {
+      const result = await this.ctx.service.studyplan.planList.userResetPlanlist(input);
+      return result;
+    } catch (error) {
+      console.error('PlanlistConnector reset error:', error);
+      throw error;
+    }
   }
 }
 

@@ -1,13 +1,18 @@
 'use strict';
 
 module.exports = app => {
-  const { STRING, DataTypes } = app.Sequelize;
+  const { STRING, INTEGER, DataTypes } = app.Sequelize;
 
   const tbn = 'planlist';
   const Planlist = app.model.define(tbn, {
+    userid: {
+      type: INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      field: 'userid',
+    },
     username: {
       type: STRING,
-      primaryKey: true,
       allowNull: false,
     },
     mainplans: {

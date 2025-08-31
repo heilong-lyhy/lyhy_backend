@@ -12,7 +12,7 @@ module.exports = app => {
     },
     planid: {
       type: INTEGER,
-      allowNull: true,
+      allowNull: false,
       field: 'planid',
     },
     subtitle: {
@@ -31,30 +31,28 @@ module.exports = app => {
       defaultValue: 0,
       field: 'completed',
     },
-    created_at: {
+    subdeadline: {
       type: DATE,
       allowNull: false,
-      field: 'created_at',
+      field: 'subdeadline',
     },
-    updated_at: {
+    updatedAt: {
       type: DATE,
       allowNull: false,
-      field: 'updated_at',
+      field: 'updatedAt',
     },
-    // createdAt: {
+    // subdeadline: {
     //   type: DATE,
-    //   field: 'createdAt',
+    //   field: 'subdeadline',
     // },
     // updateAt: {
     //   type: DATE,
     //   field: 'updateAt',
     // },
   }, {
-    // freezeTableName: true,
-    timestamps: true,
-    createdAt: 'created_at', // 可自定义字段名
-    updatedAt: 'updated_at',
-    // tableName: tbn,
+    freezeTableName: true,
+    timestamps: false,
+    tableName: tbn,
     // underscored: true,
   });
 
